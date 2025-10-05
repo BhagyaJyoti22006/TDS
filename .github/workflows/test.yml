@@ -6,7 +6,7 @@ on:
       - main  # change it if your default branch is different
 
 jobs:
-  test_email_step:
+  test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
