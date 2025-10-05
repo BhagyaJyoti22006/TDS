@@ -3,9 +3,15 @@ name: Combined Workflow
 on: [push]
 
 jobs:
-  test:
+  test_email_step:
     runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: 24f2002505@ds.study.iitm.ac.in
+        run: echo "Hello, world!"
 
+  cache_dependencies:
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
 
@@ -13,12 +19,9 @@ jobs:
         id: cache-step
         uses: actions/cache@v4
         with:
-          path: ~/.cache  # adjust based on your dependency location
+          path: ~/.cache  # Adjust path for your dependencies directory
           key: cache-c9baa37
           restore-keys: cache-c9baa37
 
       - name: prime-cache-c9baa37
         run: echo "Cache hit: ${{ steps.cache-step.outputs.cache-hit }}"
-
-      - name: 24f2002505@ds.study.iitm.ac.in
-        run: echo "Hello, world!"
